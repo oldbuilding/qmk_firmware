@@ -14,7 +14,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// https://github.com/harlequin144/planck-keymap/blob/master/docs/config_options.md
+
 #pragma once
+
+#undef AU_OFF
+#undef MU_OFF
+#undef NO_AUDIO_ENABLE
+#undef NO_PRINT
+#undef NO_DEBUG
+
+#define FORCE_NKRO
+#define PREVENT_STUCK_MODIFIERS
+
+#define LEADER_TIMEOUT 300
+
+#define TAPPING_FORCE_HOLD
+// makes it possible to use a dual role key as modifier shortly after having been tapped See Hold after tap
 
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PLANCK_SOUND)
@@ -32,7 +48,7 @@
    - MIDI notes can be sent when in Music mode is on
 */
 
-#define MIDI_BASIC
+// #define MIDI_BASIC
 
 /* enable advanced MIDI features:
    - MIDI notes can be added to the keymap
@@ -40,10 +56,10 @@
    - Virtual sustain, portamento, and modulation wheel
    - etc.
 */
-//#define MIDI_ADVANCED
+// #define MIDI_ADVANCED
 
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
-//#define MIDI_TONE_KEYCODE_OCTAVES 2
+// #define MIDI_TONE_KEYCODE_OCTAVES 2
 
 // Most tactile encoders have detents every 4 stages
-#define ENCODER_RESOLUTION 4
+// #define ENCODER_RESOLUTION 4
