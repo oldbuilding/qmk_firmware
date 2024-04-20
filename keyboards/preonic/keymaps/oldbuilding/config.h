@@ -3,6 +3,11 @@
 #define NO_MUSIC_MODE
 #undef MIDI_BASIC
 #undef ENCODER_RESOLUTION
+#undef AUDIO_VOICES
+#undef AUDIO_PIN
+#undef AUDIO_PIN A5
+#undef AUDIO_PIN_ALT A4
+#undef AUDIO_PINT_ALT_AS_NEGATIVE
 
 /*
   Set any config.h overrides for your specific keymap here.
@@ -12,13 +17,13 @@
 // reduce the size by disabling debugging if not needed
 #ifndef NO_DEBUG
 #define NO_DEBUG
-#endif // !NO_DEBUG
+#endif
+
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
 #define NO_PRINT
-#endif // !NO_PRINT
+#endif
 
 #define ORYX_CONFIGURATOR
-#define IGNORE_MOD_TAP_INTERRUPT
 // #undef RGB_DISABLE_TIMEOUT
 // #define RGB_DISABLE_TIMEOUT 300000
 // #define RGB_MATRIX_LEDMAPS_ENABLED

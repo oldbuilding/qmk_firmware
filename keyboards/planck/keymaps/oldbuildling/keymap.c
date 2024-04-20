@@ -51,9 +51,9 @@ enum planck_keycodes {
 
 
 #define DVAK _DVORAK
-#define LAYL MO(_LOWER)
-#define LAYR MO(_RAISE)
-#define LAYA MO(_ADJUST)
+#define LLOW MO(_LOWER)
+#define LRAI MO(_RAISE)
+#define LADJ MO(_ADJUST)
 
 static int os_mode = WIN_OS;
 
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _TAB, _QOT, _COM, _DOT, __P_, __Y_, __F_, __G_, __C_, __R_, __L_, PREV_WORD,
     _ESC, __A_, __O_, __E_, __U_, __I_, __D_, __H_, __T_, __N_, __S_, _MIN,
     _LST, _SCN, __Q_, __J_, __K_, __X_, __B_, __M_, __W_, __V_, __Z_, _ENT,
-    _LGU, _LCT, _MIN, _LAT, LAYL, _SPC, _SPC, LAYR, ____, ____, ____, ____
+    _LGU, _LCT, _MIN, _LAT, LLOW, _SPC, _SPC, LRAI, ____, ____, ____, ____
   ),
 
 /* Lower
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _GRV, __1_, __2_, __3_, __4_, __5_, __6_, __7_, __8_, __9_, __0_, _BKS,
     _DEL, _F1_, _F2_, _F3_, _F4_, _F5_, _F6_, _UND, _PLS, _LCB, _RCB, _PIP,
     ____, _F7_, _F8_, _F9_, _F10, _F11, _F12, ____, ____, _HOM, _END, ____,
-    ____, ____, ____, ____, ____, ____, ____, ____, LAYA, ____, ____, ____
+    ____, ____, ____, ____, ____, ____, ____, ____, LADJ, ____, ____, ____
   ),
 
 /* Raise
