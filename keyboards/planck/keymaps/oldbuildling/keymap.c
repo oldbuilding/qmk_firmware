@@ -25,28 +25,18 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keycode_abbreviations.c"
+#include "oldbuilding.c"
 
 // clang-format off
 
 enum planck_layers {
-    _DVORAK,
-    _LOWER,
-    _RAISE,
-    _ADJUST
-    // _DEBUG
+    _DEBUG = _LAST
 };
 
 
 enum planck_keycodes {
-    DVORAK = SAFE_RANGE,
-    BACKLIT,
+    BACKLIT = NEW_SAFE_RANGE,
     EXT_PLV,
-    WIN_OS,
-    MAC_OS,
-    TOGGLE_OS,
-    TOGGLE_KB, // toggles OS input sources between "Dvorak" and "Unicode Hex Input"
-    PREV_WORD, // select and remove the previous word
 };
 
 
@@ -55,15 +45,6 @@ enum planck_keycodes {
 #define LRAI MO(_RAISE)
 #define LADJ MO(_ADJUST)
 
-static int os_mode = WIN_OS;
-
-bool is_win(void) {
-    return os_mode == WIN_OS;
-}
-
-bool is_mac(void) {
-    return os_mode == MAC_OS;
-}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -147,102 +128,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case TOGGLE_OS:
-            if (record->event.pressed) {
-                os_mode = (os_mode == WIN_OS ? MAC_OS : WIN_OS);
-            }
-        case TOGGLE_KB:
-            if (is_win()) {
-                // Send Win + Space for Windows
-                register_code(KC_LCTL); // Control key on Windows is CTL
-                tap_code(KC_SPACE);
-                unregister_code(KC_LCTL);
-            } else {
-                // Send Command + Space for macOS
-                register_code(KC_LGUI); // Command key on macOS is GUI
-                tap_code(KC_SPACE);
-                unregister_code(KC_LGUI);
-            }
-            return false;
-        case DVORAK:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_DVORAK);
-            }
-            return false;
-            break;
-        case PREV_WORD:
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                register_code(WIN_OS ? KC_LSFT : KC_LALT);
-                tap_code(KC_LEFT);
-                wait_ms(100); // Wait 100 milliseconds to ensure the selection is registered
-                unregister_code(WIN_OS ? KC_LSFT : KC_LALT);
-                unregister_code(KC_LCTL);
-                // tap_code(KC_BSPC);
-            }
-            return false;
-            break;
-        case SQUARE_BRACKETS:
-            SEND_STRING(SS_TAP(X_LCTRL) "x[" SS_TAP(X_LCTRL) "v]");
-            return false; // We handle the key event here, no further processing needed
-
-        case CURLY_BRACES:
-            SEND_STRING(SS_TAP(X_LCTRL) "x{" SS_TAP(X_LCTRL) "v}");
-            return false;
-
-        case PARENTHESES:
-            SEND_STRING(SS_TAP(X_LCTRL) "x(" SS_TAP(X_LCTRL) "v)");
-            return false;
-
-        case ANGLE_BRACKETS:
-            SEND_STRING(SS_TAP(X_LCTRL) "x<" SS_TAP(X_LCTRL) "v>");
-            return false;
-    }
-    return true;
-}
 
 bool     muse_mode      = false;
 uint8_t  last_muse_note = 0;
 uint16_t muse_counter   = 0;
 uint8_t  muse_offset    = 70;
 uint16_t muse_tempo     = 50;
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (muse_mode) {
-        if (IS_LAYER_ON(_RAISE)) {
-            //         eeconfig_update_keymap(keymap_config.raw);
-            if (clockwise) {
-                //         keymap_config.nkro = 1;
-                muse_offset++;
-            } else {
-                muse_offset--;
-            }
-        } else {
-            if (clockwise) {
-                muse_tempo += 1;
-            } else {
-                muse_tempo -= 1;
-            }
-        }
-    } else {
-        if (clockwise) {
-#ifdef MOUSEKEY_ENABLE
-            tap_code(KC_MS_WH_DOWN);
-#else
-            tap_code(KC_PGDN);
-#endif
-        } else {
-#ifdef MOUSEKEY_ENABLE
-            tap_code(KC_MS_WH_UP);
-#else
-            tap_code(KC_PGUP);
-#endif
-        }
-    }
-    return true;
-}
 
 bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {

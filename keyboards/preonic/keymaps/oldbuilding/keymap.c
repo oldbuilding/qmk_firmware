@@ -1,40 +1,25 @@
 #include QMK_KEYBOARD_H
 #include "preonic.h"
-#include "keycode_abbreviations.c"
+#include "oldbuilding.h"
 
 enum preonic_layers {
-    _DVORAK = 0,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
-    _DEBUG
-    // _NUMPAD,
-    // _NAVIGATION,
-    // _FUNCTIONS,
-    // _SYMBOLS,
-    // _SETTINGS,
-    // _MEDIA,
-    // _EMPTY
+    _DEBUG = _LAST
 };
 
 enum ortho_keycodes {
-    DVORAK = SAFE_RANGE,
-    NUMPAD,
-    NAVIGATION,
-    FUNCTIONS,
-    SYMBOLS,
-    SETTINGS,
-    MEDIA,
-    EMPTY,
-    WIN_OS,
-    MAC_OS,
-    _TOS,
-    _TKB, // toggles OS input sources between "Dvorak" and "Unicode Hex Input"
-    M_PW, // select the previous word
-    SURS, // surround with square brackets
-    SURC, // surround with curly braces
-    SURP, // surround with parentheses
-    SURA  // surround with angle brackets
+    DVORAK = NEW_SAFE_RANGE,
+    // NUMPAD,
+    // NAVIGATION,
+    // FUNCTIONS,
+    // SYMBOLS,
+    // SETTINGS,
+    // MEDIA,
+    // EMPTY,
+    // WIN_OS,
+    // MAC_OS,
+    // _TOS,
+    // _TKB, // toggles OS input sources between "Dvorak" and "Unicode Hex Input"
+
 };
 
 #define DVAK _DVORAK
@@ -42,15 +27,7 @@ enum ortho_keycodes {
 #define LRAI MO(_RAISE)
 #define LADJ MO(_ADJUST)
 
-static int os_mode = WIN_OS;
-
-bool is_win(void) {
-    return os_mode == WIN_OS;
-}
-
-bool is_mac(void) {
-    return os_mode == MAC_OS;
-}
+// clang-format off
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Dvorak
@@ -66,7 +43,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | Ctrl | GUI  |  Alt |  L 1 | L 2  | L 3  | ENT  | SPC  |  <-  |   v  |   ^  |  ->  |
      * `-----------------------------------------------------------------------------------'
      */
-    // clang-format off
     [_DVORAK] = LAYOUT_ortho_5x12( \
         _ESC, __1_, __2_, __3_, __4_, __5_, __6_, __7_, __8_, __9_, __0_, _BKS,
         _DQT, _COM, _DOT, __P_, __Y_, LPRN, , __F_, __G_, __C_, __R_, __L_,
@@ -88,13 +64,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ____, ____, ____, ____, ____, ____, TILD, EXLM, AT, HASH, LT, GT,
         ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____
     ),
-    // [_NAVIGATION] = LAYOUT_ortho_5x12( \
-    //     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-    //     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-    //     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-    //     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-    //     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____
-    // ),
     [_DEBUG] = LAYOUT_ortho_5x12( \
         ____, ____, ____, ____, ____, ____, ____, ____, F1__3_ F1__4_ F1__5_ F1__6_
         ____, ____, ____, ____, ____, ____, ____, ____, _F9_, _F10, _F11,_F12,
@@ -130,69 +99,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case TOGGLE_OS:
-            if (record->event.pressed) {
-                os_mode = (os_mode == WIN_OS ? MAC_OS : WIN_OS);
-            }
-
-        case TOGGLE_KB:
-            if (is_win()) {
-                // Send Win + Space for Windows
-                register_code(KC_LCTL); // Control key on Windows is CTL
-                tap_code(KC_SPACE);
-                unregister_code(KC_LCTL);
-            } else {
-                // Send Command + Space for macOS
-                register_code(KC_LGUI); // Command key on macOS is GUI
-                tap_code(KC_SPACE);
-                unregister_code(KC_LGUI);
-            }
-            return false;
-
-        case DVORAK:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_DVORAK);
-            }
-            return false;
-            break;
-
-        case M_PW: // Select the previous word
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                register_code(WIN_OS ? KC_LSFT : KC_LALT);
-                tap_code(KC_LEFT);
-                wait_ms(100); // Wait 100 milliseconds to ensure the selection is registered
-                unregister_code(WIN_OS ? KC_LSFT : KC_LALT);
-                unregister_code(KC_LCTL);
-                // tap_code(KC_BSPC);
-            }
-            return false;
-            break;
-
-        case SURS: // surround with square brackets
-            SEND_STRING(SS_TAP(X_LCTRL) "x[" SS_TAP(X_LCTRL) "v]");
-            return false;
-            break;
-
-        case SURC: // surround with curly braces
-            SEND_STRING(SS_TAP(X_LCTRL) "x{" SS_TAP(X_LCTRL) "v}");
-            return false;
-            break;
-
-        case SURP: // surround with parentheses
-            SEND_STRING(SS_TAP(X_LCTRL) "x(" SS_TAP(X_LCTRL) "v)");
-            return false;
-            break;
-
-        case SURA: // surround with angle brackets
-            SEND_STRING(SS_TAP(X_LCTRL) "x<" SS_TAP(X_LCTRL) "v>");
-            return false;
-            break;
-    }
-    return true;
-}
 
 void matrix_scan_user(void) {
     static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
@@ -206,37 +112,5 @@ void matrix_scan_user(void) {
         }
     }
 }
-
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case DVORAK:
-//             if (record->event.pressed) {
-//                 set_single_persistent_default_layer(_DVORAK);
-//             }
-//             return false;
-//             break;
-//         case LOWER:
-//             if (record->event.pressed) {
-//                 layer_on(_LOWER);
-//                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//             } else {
-//                 layer_off(_LOWER);
-//                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//             }
-//             return false;
-//             break;
-//         case RAISE:
-//             if (record->event.pressed) {
-//                 layer_on(_RAISE);
-//                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//             } else {
-//                 layer_off(_RAISE);
-//                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//             }
-//             return false;
-//             break;
-//     }
-//     return true;
-// };
 
 // void matrix_scan_user(void) {}

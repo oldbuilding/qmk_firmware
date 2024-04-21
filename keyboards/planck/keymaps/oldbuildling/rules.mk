@@ -1,3 +1,5 @@
+USER_NAME := oldbuilding
+
 AUTO_SHIFT_ENABLE = yes
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = no       # Mouse keys(+4700)
