@@ -129,6 +129,7 @@
 // Special keys
 #define ____ KC_TRNS
 #define _RET RESET
+#define _REB QK_REBOOT
 
 // Auto shift
 #define _ASD AS_DOWN

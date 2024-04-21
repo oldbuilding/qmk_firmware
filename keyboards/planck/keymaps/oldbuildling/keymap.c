@@ -33,8 +33,8 @@ enum planck_layers {
     _DVORAK,
     _LOWER,
     _RAISE,
-    _ADJUST,
-    _DEBUG
+    _ADJUST
+    // _DEBUG
 };
 
 
@@ -139,25 +139,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, TOGGLE_KB,
     _RET, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, TOGGLE_OS
   )
-
-// /* Adjust (Lower + Raise)
-//  * ,-----------------------------------------------------------------------------------.
-//  * | DVAK |      |      |      |      |      |      |      |  FF  | VOL+ | VOL- | PLAY |
-//  * |-----------------------------------------------------------------------------------|
-//  * |      |      |      |      |      |      |      |      |      |      |      |      |
-//  * |-----------------------------------------------------------------------------------|
-//  * |      |      |      |      |      |      |      |      |      |      |      |      |
-//  * |------+------+------+------+------+------+------+------+------+------+------+------|
-//  * |      |      |      |      |      |             |      |      |      |      | inpt |
-//  * `-----------------------------------------------------------------------------------'
-//  */
-//   [_ADJUST] = LAYOUT_planck_grid(
-//     DVAK, ____, ____, ____, ____, ____, ____, ____, _MFF, _VLD, _VLP, _PLY
-//     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-//     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-//     ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____
-//   )
-
 };
 
 // clang-format on
@@ -203,6 +184,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        case SQUARE_BRACKETS:
+            SEND_STRING(SS_TAP(X_LCTRL) "x[" SS_TAP(X_LCTRL) "v]");
+            return false; // We handle the key event here, no further processing needed
+
+        case CURLY_BRACES:
+            SEND_STRING(SS_TAP(X_LCTRL) "x{" SS_TAP(X_LCTRL) "v}");
+            return false;
+
+        case PARENTHESES:
+            SEND_STRING(SS_TAP(X_LCTRL) "x(" SS_TAP(X_LCTRL) "v)");
+            return false;
+
+        case ANGLE_BRACKETS:
+            SEND_STRING(SS_TAP(X_LCTRL) "x<" SS_TAP(X_LCTRL) "v>");
+            return false;
     }
     return true;
 }
