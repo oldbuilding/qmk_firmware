@@ -1,5 +1,6 @@
 #ifndef USERSPACE
 #define USERSPACE
+#pragma once
 
 #include "quantum.h"
 
