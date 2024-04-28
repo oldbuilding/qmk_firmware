@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "oldbuilding.h"
+         "keycode_abbreviations.c"
 
 enum preonic_layers { _DEBUG = _LAST };
 
