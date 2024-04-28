@@ -5,8 +5,7 @@
 #undef ENCODER_RESOLUTION
 #undef AUDIO_VOICES
 #undef AUDIO_PIN
-#undef AUDIO_PIN A5
-#undef AUDIO_PIN_ALT A4
+#undef AUDIO_PIN_ALT
 #undef AUDIO_PINT_ALT_AS_NEGATIVE
 
 /*
@@ -16,11 +15,11 @@
 
 // reduce the size by disabling debugging if not needed
 #ifndef NO_DEBUG
-#define NO_DEBUG
+#    define NO_DEBUG
 #endif
 
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
-#define NO_PRINT
+#    define NO_PRINT
 #endif
 
 #define ORYX_CONFIGURATOR
@@ -50,8 +49,8 @@
 // #define FIRMWARE_VERSION u8"BzYwW/WEaL3"
 #define NO_AUTO_SHIFT_ALPHA
 #define NO_AUTO_SHIFT_TAB
-//#define RAW_USAGE_ID 0x61
-//#define RAW_USAGE_PAGE 0xFF60
+// #define RAW_USAGE_ID 0x61
+// #define RAW_USAGE_PAGE 0xFF60
 #define USB_SUSPEND_WAKEUP_DELAY 0
 
 // reduce size of output bin file
