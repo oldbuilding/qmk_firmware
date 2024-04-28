@@ -6,7 +6,7 @@ enum preonic_layers {
 };
 
 enum ortho_keycodes {
-    DVORAK = NEW_SAFE_RANGE,
+    // DVORAK = NEW_SAFE_RANGE,
     // NUMPAD,
     // NAVIGATION,
     // FUNCTIONS,
