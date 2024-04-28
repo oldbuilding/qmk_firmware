@@ -84,15 +84,15 @@
 // Symbol keys
 #define _MIN KC_MINUS // -
 #define _EQL KC_EQUAL // =
-#define _LBC KC_LBRC // [
-#define _RBC KC_RBRC // ]
-#define _BSL KC_BSLS // '\'
-#define _SCN KC_SCLN // ;
-#define _QOT KC_QUOT // '
-#define _COM KC_COMM // ,
-#define _DOT KC_DOT // .
-#define _SLS KC_SLSH // /
-#define _GRV KC_GRV // `
+#define _LBC KC_LBRC  // [
+#define _RBC KC_RBRC  // ]
+#define _BSL KC_BSLS  // '\'
+#define _SCN KC_SCLN  // ;
+#define _QOT KC_QUOT  // '
+#define _COM KC_COMM  // ,
+#define _DOT KC_DOT   // .
+#define _SLS KC_SLSH  // /
+#define _GRV KC_GRV   // `
 
 // Shifted symbol keys
 #define _AMP KC_AMPR // &
@@ -102,9 +102,10 @@
 #define _COL KC_COLN // :
 #define _DOL KC_DLR  // $
 #define _DQT KC_DQT  // "
-#define _GT_ KC_GT  // >
+#define _GT_ KC_GT   // >
+#define _LPN KC_LPRN // (
 #define _LCB KC_LCBR // {
-#define _LT_ KC_LT  // <
+#define _LT_ KC_LT   // <
 #define _PIP KC_PIPE // |
 #define _PLS KC_PLUS // +
 #define _POU KC_EXLM // !
@@ -112,6 +113,7 @@
 #define _QMK KC_QUES // ?
 #define _QUO KC_DQUO // "
 #define _RCB KC_RCBR // }
+#define _RPN KC_RPRN // )
 #define _UND KC_UNDS // _
 
 // Media keys
