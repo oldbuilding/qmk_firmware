@@ -1,25 +1,23 @@
 #include QMK_KEYBOARD_H
 #include "oldbuilding.h"
 
-enum preonic_layers {
-    _DEBUG = _LAST
-};
+enum preonic_layers { _DEBUG = _LAST };
 
-enum ortho_keycodes {
-    // DVORAK = NEW_SAFE_RANGE,
-    // NUMPAD,
-    // NAVIGATION,
-    // FUNCTIONS,
-    // SYMBOLS,
-    // SETTINGS,
-    // MEDIA,
-    // EMPTY,
-    // WIN_OS,
-    // MAC_OS,
-    // _TOS,
-    // _TKB, // toggles OS input sources between "Dvorak" and "Unicode Hex Input"
+// enum ortho_keycodes {
+//     // DVORAK = NEW_SAFE_RANGE,
+//     // NUMPAD,
+//     // NAVIGATION,
+//     // FUNCTIONS,
+//     // SYMBOLS,
+//     // SETTINGS,
+//     // MEDIA,
+//     // EMPTY,
+//     // WIN_OS,
+//     // MAC_OS,
+//     // _TOS,
+//     // _TKB, // toggles OS input sources between "Dvorak" and "Unicode Hex Input"
 
-};
+// };
 
 #define DVAK _DVORAK
 #define LLOW MO(_LOWER)
@@ -97,7 +95,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
 
 void matrix_scan_user(void) {
     static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
