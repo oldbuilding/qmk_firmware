@@ -13,27 +13,21 @@ enum custom_keycodes {
     SUR_SQ, // surround with square brackets
     SUR_CB, // surround with curly braces
     SUR_PB, // surround with parentheses
-    SUR_AB,  // surround with angle brackets
+    SUR_AB, // surround with angle brackets
     NEW_SAFE_RANGE
-}
+};
 
-enum common_layers {
-    _DVORAK,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
-    _LAST
-}
+enum common_layers { _DVORAK, _LOWER, _RAISE, _ADJUST, _LAST };
 
 // Function declarations
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record);
 
-bool is_win(void);
-bool is_mac(void);
-
 // add external references to keycodes
 
-extern int os_mode;
+// extern int os_mode;
+
+bool is_win(void);
+bool is_mac(void);
 
 #endif

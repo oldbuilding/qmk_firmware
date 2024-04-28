@@ -1,6 +1,5 @@
 #include "oldbuilding.h"
 
-
 static int os_mode = WIN_OS;
 
 bool is_win(void) {
@@ -13,14 +12,14 @@ bool is_mac(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case TOGGLE_OS:
+        case TOG_OS:
             if (record->event.pressed) {
                 os_mode = (os_mode == WIN_OS ? MAC_OS : WIN_OS);
             }
+            break;
 
-        case TOGGLE_KB:
+        case TOG_KB: // Send Win + Space for Windows
             if (is_win()) {
-                // Send Win + Space for Windows
                 register_code(KC_LCTL); // Control key on Windows is CTL
                 tap_code(KC_SPACE);
                 unregister_code(KC_LCTL);
@@ -39,7 +38,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
             break;
 
-        case M_PW: // Select the previous word
+            return false;
             if (record->event.pressed) {
                 register_code(KC_LCTL);
                 register_code(WIN_OS ? KC_LSFT : KC_LALT);
@@ -52,22 +51,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
             break;
 
-        case SURS: // surround with square brackets
+        case SUR_SQ: // surround with square brackets
             SEND_STRING(SS_TAP(X_LCTRL) "x[" SS_TAP(X_LCTRL) "v]");
             return false;
             break;
 
-        case SURC: // surround with curly braces
+        case SUR_CB: // surround with curly braces
             SEND_STRING(SS_TAP(X_LCTRL) "x{" SS_TAP(X_LCTRL) "v}");
             return false;
             break;
 
-        case SURP: // surround with parentheses
+        case SUR_PB: // surround with parentheses
             SEND_STRING(SS_TAP(X_LCTRL) "x(" SS_TAP(X_LCTRL) "v)");
             return false;
             break;
 
-        case SURA: // surround with angle brackets
+        case SUR_AB: // surround with angle brackets
             SEND_STRING(SS_TAP(X_LCTRL) "x<" SS_TAP(X_LCTRL) "v>");
             return false;
             break;
