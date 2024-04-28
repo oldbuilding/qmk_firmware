@@ -52,22 +52,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
         case SUR_SQ: // Cut, type "[", paste, type "]"
-            SEND_STRING(SS_LCTRL("x") "[" SS_LCTRL("v") "]");
+            SEND_STRING(SS_LCTL("x") "[" SS_LCTL("v") "]");
             return false;
             break;
 
         case SUR_CB: // Cut, type "{", paste, type "}"
-            SEND_STRING(SS_LCTRL("x") "{" SS_LCTRL("v") "}");
+            SEND_STRING(SS_LCTL("x") "{" SS_LCTL("v") "}");
             return false;
             break;
 
         case SUR_PB: // Cut, type "(", paste, type ")"
-            SEND_STRING(SS_LCTRL("x") "(" SS_LCTRL("v") ")");
+            SEND_STRING(SS_LCTL("x") "(" SS_LCTL("v") ")");
             return false;
             break;
 
         case SUR_AB: // Cut, type "<", paste, type ">"
-            SEND_STRING(SS_LCTRL("x") "<" SS_LCTRL("v") ">");
+            SEND_STRING(SS_LCTL("x") "<" SS_LCTL("v") ">");
             return false;
             break;
     }
