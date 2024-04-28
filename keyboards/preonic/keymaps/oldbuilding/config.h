@@ -8,20 +8,26 @@
 #undef AUDIO_PIN_ALT
 #undef AUDIO_PINT_ALT_AS_NEGATIVE
 
-#ifdef RGBLIGHT_ENABLE
-#    error "RGBLIGHT_ENABLE --- what?"
-#    define RGBLIGHT_ANIMATIONS
-#    define RGBLIGHT_HUE_STEP 8
-#    define RGBLIGHT_SAT_STEP 8
-#    define RGBLIGHT_VAL_STEP 8
-#endif
+// #ifdef RGBLIGHT_ENABLE
+// #    error "RGBLIGHT_ENABLE --- what?"
+// #    define RGBLIGHT_ANIMATIONS
+// #    define RGBLIGHT_HUE_STEP 8
+// #    define RGBLIGHT_SAT_STEP 8
+// #    define RGBLIGHT_VAL_STEP 8
+// #endif
 
-#ifndef RGB_MATRIX_ENABLE
-#    error "RGB_MATRIX_ENABLE --- what?"
-#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_ALL
-#    define RGB_MATRIX_STARTUP_VAL RGBLIGHT_LIMIT_VAL
-#    define RGB_DISABLE_WHEN_USB_SUSPENDED
-#endif
+// #ifndef RGB_MATRIX_ENABLE
+// #    error "RGB_MATRIX_ENABLE --- what?"
+// #    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_ALL
+// #    define RGB_MATRIX_STARTUP_VAL RGBLIGHT_LIMIT_VAL
+// #    define RGB_DISABLE_WHEN_USB_SUSPENDED
+// #endif
+// #undef RGB_DISABLE_TIMEOUT
+// #define RGB_DISABLE_TIMEOUT 300000
+// #define RGB_MATRIX_LEDMAPS_ENABLED
+// #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_ALL
+// #define RGB_MATRIX_STARTUP_VAL RGBLIGHT_LIMIT_VAL
+// #define RGB_DISABLE_WHEN_USB_SUSPENDED // Optional: Turns off RGB when the computer is sleeping
 
 /*
   Set any config.h overrides for your specific keymap here.
@@ -38,13 +44,6 @@
 #endif
 
 #define ORYX_CONFIGURATOR
-// #undef RGB_DISABLE_TIMEOUT
-// #define RGB_DISABLE_TIMEOUT 300000
-// #define RGB_MATRIX_LEDMAPS_ENABLED
-
-#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_ALL
-#define RGB_MATRIX_STARTUP_VAL RGBLIGHT_LIMIT_VAL
-#define RGB_DISABLE_WHEN_USB_SUSPENDED // Optional: Turns off RGB when the computer is sleeping
 
 // #define RGBLIGHT_ANIMATIONS
 // #define RGBLIGHT_LED_COUNT 32
