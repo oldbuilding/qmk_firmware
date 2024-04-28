@@ -51,23 +51,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
             break;
 
-        case SUR_SQ: // surround with square brackets
-            SEND_STRING(SS_TAP(X_LCTRL) "x[" SS_TAP(X_LCTRL) "v]");
+        case SUR_SQ: // Cut, type "[", paste, type "]"
+            SEND_STRING(SS_LCTRL("x") "[" SS_LCTRL("v") "]");
             return false;
             break;
 
-        case SUR_CB: // surround with curly braces
-            SEND_STRING(SS_TAP(X_LCTRL) "x{" SS_TAP(X_LCTRL) "v}");
+        case SUR_CB: // Cut, type "{", paste, type "}"
+            SEND_STRING(SS_LCTRL("x") "{" SS_LCTRL("v") "}");
             return false;
             break;
 
-        case SUR_PB: // surround with parentheses
-            SEND_STRING(SS_TAP(X_LCTRL) "x(" SS_TAP(X_LCTRL) "v)");
+        case SUR_PB: // Cut, type "(", paste, type ")"
+            SEND_STRING(SS_LCTRL("x") "(" SS_LCTRL("v") ")");
             return false;
             break;
 
-        case SUR_AB: // surround with angle brackets
-            SEND_STRING(SS_TAP(X_LCTRL) "x<" SS_TAP(X_LCTRL) "v>");
+        case SUR_AB: // Cut, type "<", paste, type ">"
+            SEND_STRING(SS_LCTRL("x") "<" SS_LCTRL("v") ">");
             return false;
             break;
     }
