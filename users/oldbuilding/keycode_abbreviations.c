@@ -1,6 +1,3 @@
-// key_shortcuts.h
-#pragma once
-
 // Letters
 #define __A_ KC_A
 #define __B_ KC_B
