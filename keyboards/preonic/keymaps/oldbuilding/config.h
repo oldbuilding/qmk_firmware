@@ -9,11 +9,18 @@
 #undef AUDIO_PINT_ALT_AS_NEGATIVE
 
 #ifdef RGBLIGHT_ENABLE
-echo "RGBLIGHT_ENABLE --- what?"
+#    error "RGBLIGHT_ENABLE --- what?"
 #    define RGBLIGHT_ANIMATIONS
 #    define RGBLIGHT_HUE_STEP 8
 #    define RGBLIGHT_SAT_STEP 8
 #    define RGBLIGHT_VAL_STEP 8
+#endif
+
+#ifdef RGB_MATRIX_ENABLE
+#    error "RGB_MATRIX_ENABLE --- what?"
+#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_ALL
+#    define RGB_MATRIX_STARTUP_VAL RGBLIGHT_LIMIT_VAL
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
 #endif
 
 /*
