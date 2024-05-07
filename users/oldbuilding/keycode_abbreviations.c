@@ -87,7 +87,7 @@
 #define _LBC KC_LBRC  // [
 #define _RBC KC_RBRC  // ]
 #define _BSL KC_BSLS  // '\'
-#define _SCN KC_SCLN  // ;
+#define _SCN KC_SCLN  // ; and :
 #define _QOT KC_QUOT  // '
 #define _COM KC_COMM  // ,
 #define _DOT KC_DOT   // .
@@ -108,13 +108,15 @@
 #define _LT_ KC_LT   // <
 #define _PIP KC_PIPE // |
 #define _PLS KC_PLUS // +
-#define _POU KC_EXLM // !
+#define _XLM KC_EXLM // !
 #define _PRC KC_PERC // %
 #define _QMK KC_QUES // ?
 #define _QUO KC_DQUO // "
 #define _RCB KC_RCBR // }
 #define _RPN KC_RPRN // )
 #define _UND KC_UNDS // _
+#define _TLD KC_TILD // ~
+#define _HSH KC_HASH // #
 
 // Media keys
 #define _MUT KC_MUTE
