@@ -42,11 +42,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [_DVORAK] = LAYOUT_ortho_5x12( \
-        _ESC, __1_, __2_, __3_, __4_, __5_, __6_, __7_, __8_, __9_, __0_, _BKS,
-        _DQT, _COM, _DOT, __P_, __Y_, _LPN, _RPN, __F_, __G_, __C_, __R_, __L_,
-        __A_, __O_, __E_, __U_, __I_, _LBC, _RBC, __D_, __H_, __T_, __N_, __S_,
-        _LST, __Q_, __J_, __K_, __X_, _SCN, M_PW, __B_, __M_, __W_, __V_, __Z_,
-        _LCT, _LGU, _LAT, LLOW, LRAI, LADJ, _ENT, _SPC, _LFT, _DN_, _UP_, _RGT
+        _ESC, __1_, __2_, __3_, __4_,    __5_,   __6_,     __7_, __8_, __9_, __0_, _BKS,
+        _DQT, _COM, _DOT, __P_, __Y_,    _LPN,   _RPN,     __F_, __G_, __C_, __R_, __L_,
+        __A_, __O_, __E_, __U_, __I_,    _LBC,   _RBC,     __D_, __H_, __T_, __N_, __S_,
+        _LST, __Q_, __J_, __K_, __X_,    _SCN,   M_PRWD,   __B_, __M_, __W_, __V_, __Z_,
+        _LCT, _LGU, _LAT, LLOW, LRAI,    LADJ,   _ENT,     _SPC, _LFT, _DN_, _UP_, _RGT
     ),
     [_LOWER] = LAYOUT_ortho_5x12( \
         ____, ____, ____, ____, ____, ____, ____, ____, __7_, __8_, __9_, _BKS,
