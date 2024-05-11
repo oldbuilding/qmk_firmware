@@ -1,6 +1,6 @@
 #include "oldbuilding.h"
 
-static int os_mode = WIN_OS;
+// static int os_mode = WIN_OS;
 
 bool is_win(void) {
     return os_mode == WIN_OS;
