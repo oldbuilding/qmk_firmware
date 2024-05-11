@@ -1,6 +1,7 @@
 #include "oldbuilding.h"
 
 // static int os_mode = WIN_OS;
+int os_mode = WIN_OS; // initial definition
 
 bool is_win(void) {
     return os_mode == WIN_OS;
@@ -8,6 +9,10 @@ bool is_win(void) {
 
 bool is_mac(void) {
     return os_mode == MAC_OS;
+}
+
+__attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t state) {
+    return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
