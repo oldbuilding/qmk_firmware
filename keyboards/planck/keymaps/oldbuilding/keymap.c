@@ -154,15 +154,15 @@ bool dip_switch_update_user(uint8_t index, bool active) {
     return true;
 }
 
-void matrix_scan_user(void) {
-    static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
-    if (os_mode != old_os_mode) {
-        old_os_mode            = os_mode;
-        uint8_t spacebar_index = 38;
-        if (os_mode == WIN_OS) {
-            rgb_matrix_set_color(spacebar_index, RGB_PURPLE);
-        } else if (os_mode == MAC_OS) {
-            rgb_matrix_set_color(spacebar_index, RGB_TEAL);
-        }
-    }
-}
+// void matrix_scan_user(void) {
+//     static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
+//     if (os_mode != old_os_mode) {
+//         old_os_mode            = os_mode;
+//         uint8_t spacebar_index = 38;
+//         if (os_mode == WIN_OS) {
+//             rgb_matrix_set_color(spacebar_index, RGB_PURPLE);
+//         } else if (os_mode == MAC_OS) {
+//             rgb_matrix_set_color(spacebar_index, RGB_TEAL);
+//         }
+//     }
+// }

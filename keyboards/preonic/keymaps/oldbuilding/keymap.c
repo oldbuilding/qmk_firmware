@@ -99,17 +99,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 // }
 
-void matrix_scan_user(void) {
-    static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
-    if (os_mode != old_os_mode) {
-        old_os_mode            = os_mode;
-        uint8_t spacebar_index = 38;
-        if (os_mode == WIN_OS) {
-            rgb_matrix_set_color(spacebar_index, RGB_PURPLE);
-        } else if (os_mode == MAC_OS) {
-            rgb_matrix_set_color(spacebar_index, RGB_TEAL);
-        }
-    }
-}
+// void matrix_scan_user(void) {
+//     static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
+//     if (os_mode != old_os_mode) {
+//         old_os_mode            = os_mode;
+//         uint8_t spacebar_index = 38;
+//         if (os_mode == WIN_OS) {
+//             rgb_matrix_set_color(spacebar_index, RGB_PURPLE);
+//         } else if (os_mode == MAC_OS) {
+//             rgb_matrix_set_color(spacebar_index, RGB_TEAL);
+//         }
+//     }
+// }
 
 // void matrix_scan_user(void) {}
