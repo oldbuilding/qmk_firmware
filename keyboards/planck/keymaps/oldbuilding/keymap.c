@@ -128,31 +128,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 // }
 
-bool     muse_mode      = false;
-uint8_t  last_muse_note = 0;
-uint16_t muse_counter   = 0;
-uint8_t  muse_offset    = 70;
-uint16_t muse_tempo     = 50;
+// bool     muse_mode      = false;
+// uint8_t  last_muse_note = 0;
+// uint16_t muse_counter   = 0;
+// uint8_t  muse_offset    = 70;
+// uint16_t muse_tempo     = 50;
 
-bool dip_switch_update_user(uint8_t index, bool active) {
-    switch (index) {
-        case 0: {
-            if (active) {
-                layer_on(_ADJUST);
-            } else {
-                layer_off(_ADJUST);
-            }
-            break;
-        }
-        case 1:
-            if (active) {
-                muse_mode = true;
-            } else {
-                muse_mode = false;
-            }
-    }
-    return true;
-}
+// bool dip_switch_update_user(uint8_t index, bool active) {
+//     switch (index) {
+//         case 0: {
+//             if (active) {
+//                 layer_on(_ADJUST);
+//             } else {
+//                 layer_off(_ADJUST);
+//             }
+//             break;
+//         }
+//         case 1:
+//             if (active) {
+//                 muse_mode = true;
+//             } else {
+//                 muse_mode = false;
+//             }
+//     }
+//     return true;
+// }
 
 // void matrix_scan_user(void) {
 //     static uint8_t old_os_mode = 255; // Invalid value to ensure the initial update
